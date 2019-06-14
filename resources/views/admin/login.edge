@@ -1,0 +1,44 @@
+@layout('include.layout')
+
+@section('guest')
+	<div class="login">
+		<h1>Login Area</h1>
+		@include('include.notification')
+
+		<form method="POST" action="/admin/login">
+			{{ csrfField() }}
+
+			<!-- I intended to use text type instead of email and not using 'required' attribute --> 
+			<!-- just to check the whether validator working or not -->
+			<div>
+				<label>Email Address</label>
+				<div>
+					<input type="text" name="email" value="{{ old('email', '') }}">
+					@if(getErrorFor('field') === 'email')
+						<span class="red_bold">{{ getErrorFor('message') }}</span>
+					@endif
+				</div>
+			</div>
+			<div>
+				<label>Password</label>
+				<div>
+					<input type="password" name="password" autocomplete="off" value="{{ old('password', '') }}">
+					@if(getErrorFor('field') === 'password')
+						<span class="red_bold">{{ getErrorFor('message') }}</span>
+					@endif
+				</div>
+			</div>
+			<div>
+				<label>
+					<input type="checkbox" name="remember" checked> Remember me
+				</label>
+			</div>
+
+			<div class="clear"></div><br />
+			<div>
+				<button type="submit">Login</button><br /><br />
+				<a href="/admin/recover_password">Forget Password?</a><br />
+			</div>
+		</form>
+	</div>
+@endsection

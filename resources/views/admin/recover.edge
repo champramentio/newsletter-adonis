@@ -1,0 +1,26 @@
+@layout('include.layout')
+
+@section('guest')
+	<div class="login">
+		<h1>Recover Password</h1>
+		@include('include.notification')
+
+		<hr />
+		<form method="POST" action="/admin/recover_password">
+			{{ csrfField() }}
+			<div>
+				<label>Email Address</label>
+				<div>
+					<input type="email" name="email" placeholder="Type your registered email in here" value="{{ old('email', '') }}" required>
+					@if(getErrorFor('field') === 'email')
+						<span class="red_bold">{{ getErrorFor('message') }}</span>
+					@endif
+				</div>
+			</div>
+			<div>
+				<button type="submit">Send to Your Email</button>&nbsp;&nbsp;
+				<a href="/admin/login">Back</a>
+			</div>
+		</form>
+	</div>
+@endsection

@@ -1,0 +1,9 @@
+@layout('include.layout')
+
+@section('admin_content')
+	<h1>Hello, {{ auth.user.username }}!</h1>
+	@include('include.notification')
+
+	<div>Welcome to Dashboard</div>
+@endsection
+

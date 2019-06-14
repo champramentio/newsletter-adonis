@@ -1,0 +1,17 @@
+<div class="nav">
+
+	<!--  Dashboard  -->
+	<div><a href="/admin/dashboard">Dashboard</a></div>
+
+	<!--  Recipient  -->
+	<div><a href="/admin/recipient">Recipient</a></div>
+
+	<!--  Newsletter  -->
+	<div><a href="/admin/newsletter">Newsletter</a></div>
+
+	<!--  Logout  -->
+	<div><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Logout</a></div>
+	<form id="logout-form" method="POST" action="/admin/logout">
+		{{ csrfField() }}
+	</form>
+</div>

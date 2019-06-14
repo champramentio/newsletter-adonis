@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Adonis JS App</title>
+	<meta name="keywords" content="adonis js">
+	<meta name="description" content="adonis js">
+	{{ style('css/admin.css') }}
+	{{ style('//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css') }}
+</head>
+<body>	
+	<div class="wrapper">
+		@loggedIn
+			<div class="container">
+				<!--  Navigation menu  -->
+				@include('include/nav')
+
+				<!--  Content area -->
+				<div class="content">
+					@!section('admin_content')
+				</div>
+			</div>
+		@else
+			@!section('guest')
+		@endloggedIn
+	</div>
+
+
+	<!--  DataTable.js  -->
+	{{ script('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js') }}
+	{{ script('//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js') }}
+	<script>
+		$(document).ready( function () {
+			$('#myTable').DataTable();
+		} );
+	</script>
+</body>
+</html>

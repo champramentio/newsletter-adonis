@@ -1,0 +1,56 @@
+@layout('include.layout')
+
+@section('admin_content')
+	<h1>Manage Newsletters</h1>
+	@include('include.notification')
+
+	<div class="spacing">
+		<a href="/admin/newsletter/add" class="button">Create Newsletter</a>
+	</div>
+
+	<table id="myTable" class="cell-border nowrap hover stripe">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Subject</th>
+				<th>Sender Email</th>
+				<th>Sender Name</th>
+				<th>Recipient Group Label</th>
+				<th>Total Recipients</th>
+				<th>Created Datetime</th>
+				<th>Created By</th>
+				<th>Sent Datetime</th>
+				<th>Sent By</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			@each(r in data)
+			<tr>
+				<td>{{ r.id }}</td>
+				<td>{{ r.subject }}</td>
+				<td>{{ r.sender_email }}</td>
+				<td>{{ r.sender_name }}</td>
+				<td>{{ r.recipient[0].label }}</td>
+				<td>{{ r.recipient[0].recipient_email.length }}</td>
+				<!-- hook method -->
+				<td>{{ getRelativeDate(r.created_datetime) }}</td>
+				<td>{{ r.created_by[0].username }}</td>
+				<!-- hook method -->
+				<td>{{ getRelativeDate(r.sent_datetime) }}</td>
+				<td>{{ r.sent_by[0].username ? r.sent_by[0].username : "" }}</td>
+				<td style="text-align:left">
+					<a class="formlink" href="/admin/newsletter/{{ r.id }}/info">View</a>
+					<a class="formlink" href="/admin/newsletter/{{ r.id }}/send" onclick="return confirm('Do you want to send this?')">Send</a>
+					<!-- delete request uses additional "_method=DELETE" inside form action -->
+					<form action="/admin/newsletter/{{ r.id }}/delete/?_method=DELETE" method="POST">
+						{{ csrfField() }}
+						<button class="formlink" onclick="return confirm('Do you want to delete this?')">Delete</button>
+					</form>
+				</td>
+			</tr>
+			@endeach
+		</tbody>
+	</table>
+@endsection
+

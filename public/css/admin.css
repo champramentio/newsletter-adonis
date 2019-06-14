@@ -1,0 +1,478 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  border: 0;
+  font-family: inherit;
+  font-size: 100%;
+  font-style: inherit;
+  font-weight: inherit;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  vertical-align: baseline;
+}
+
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: #000;
+  font-family: Arial, Helvetica;
+  line-height: 1.4;
+}
+
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+  vertical-align: middle;
+}
+
+/* =============================================================================
+   HTML5 display definitions
+================================================================================ */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+  display: block;
+}
+
+audio,
+canvas,
+video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+audio:not([controls]) {
+  display: none;
+}
+
+[hidden] {
+  display: none;
+}
+
+/* =============================================================================
+   Typography
+================================================================================ */
+
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+b,
+strong {
+  font-weight: bold;
+}
+
+blockquote {
+  margin: 1em 40px;
+}
+
+dfn {
+  font-style: italic;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+ins {
+  background: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+/* Redeclare monospace font family: h5bp.com/j */
+
+pre,
+code,
+kbd,
+samp {
+  font-family: monospace, serif;
+  _font-family: "courier new", monospace;
+  font-size: 1em;
+}
+
+/* Improve readability of pre-formatted text in all browsers */
+
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+q {
+  quotes: none;
+}
+
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+small {
+  font-size: 85%;
+}
+
+/* Position subscript and superscript content without affecting line-height: h5bp.com/k */
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+/*  ================ */
+/* 		Custom CSS 	 */
+/*  ================ */
+
+body {
+  /* margin-top: 20px; */
+  background-color: #f5f5f5;
+  font-family: "Helvetica", Arial;
+  font-size: 0.9em;
+}
+a {
+  color: teal;
+  font-size: 1em;
+}
+table {
+}
+table.simple td {
+  padding: 10px;
+  border: 1px solid black;
+}
+table.simple td:nth-child(1) {
+  text-align: right;
+  font-weight: bold;
+}
+table.simple td:nth-child(2) {
+  text-align: left;
+}
+.wrapper {
+  width: 100%;
+}
+.container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 100vh;
+  grid-template-areas: "nav content";
+}
+.nav {
+  grid-area: nav;
+  background-color: #ccc;
+  padding: 0 10px;
+  padding-top: 20px;
+  width: 140px;
+  z-index: 9999;
+  box-sizing: border-box;
+  min-height: 1500px;
+}
+.nav a {
+  color: #000;
+  line-height: 35px;
+  text-decoration: none;
+  border-bottom: 1px solid #666;
+  letter-spacing: 3px;
+  padding: 5px;
+}
+.nav a:hover,
+.nav-active a {
+  background-color: teal;
+  color: white;
+}
+
+.content {
+  grid-area: content;
+  padding: 20px 20px 20px 40px;
+  width: 90%;
+}
+.login {
+  width: 350px;
+  padding: 20px;
+  margin: 0 auto;
+  margin-top: 100px;
+  border: 5px solid teal;
+  background-color: #fff;
+}
+textarea,
+select,
+input[type="text"],
+input[type="password"],
+input[type="file"],
+input[type="email"],
+.select-selected {
+  padding: 10px;
+  font-size: 1em;
+  margin-bottom: 20px;
+  /* min-width: 328px; */
+  width: 328px;
+  border: 2px solid teal;
+  box-shadow: 4px 4px 20px rgba(155, 158, 157, 0.85);
+}
+.note-editor.note-frame {
+  border: 2px solid teal;
+}
+select {
+  /* margin: 50px; */
+  width: 350px;
+  padding: 5px 35px 5px 5px;
+  font-size: 16px;
+  border: 2px solid teal;
+  height: 38px;
+}
+
+textarea {
+  margin-bottom: 15px;
+}
+
+h1,
+h2 {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px;
+}
+input[type="submit"],
+.button,
+button {
+  background-color: teal;
+  border: 0px solid green;
+  color: white;
+  text-transform: camelcase;
+  font-size: 1.1em;
+  padding: 12px 22px;
+  cursor: pointer;
+  text-decoration: none;
+}
+button[type="submit"],
+a.button,
+button[type="button"] {
+  box-shadow: 4px 4px 20px rgba(155, 158, 157, 0.85);
+}
+input[type="submit"]:hover,
+.button:hover,
+button:hover,
+a:hover {
+  background-color: #015050;
+  color: white;
+  text-decoration: none;
+}
+input[type="submit"].link,
+a.link {
+  background: none;
+  color: teal;
+  padding: 0;
+  text-decoration: underline;
+  cursor: pointer;
+}
+input[type="text"].narrow {
+  width: 100px;
+}
+
+.spacing {
+  padding-bottom: 50px;
+}
+
+.formlink {
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  background: none;
+  color: teal;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.formlink::before {
+  content: "■ ";
+}
+.formlink::after {
+  content: "\A";
+  white-space: pre;
+}
+
+.red_bold {
+  color: red;
+  font-weight: bold;
+}
+
+.info,
+.neutral,
+.success,
+.warning,
+.error {
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  margin: 0 0 10px 0;
+  padding: 10px 5px 10px 15px;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.neutral {
+  color: #000;
+  background-color: #eaeaea;
+}
+
+.info {
+  color: #00529b;
+  background-color: #bde5f8;
+}
+
+.success {
+  color: #4f8a10;
+  background-color: #dff2bf;
+}
+
+.warning {
+  color: #9f6000;
+  background-color: #feefb3;
+}
+
+.error {
+  color: #e35f6d;
+  background-color: #ffbaba;
+}
+
+.clear {
+  clear: both;
+}
+
+/* fix css dataTable */
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+  padding: 10px;
+  height: 38px;
+  border: 2px solid teal;
+  min-width: 200px;
+  font-size: 14px;
+  box-shadow: 4px 4px 20px rgba(155, 158, 157, 0.85);
+}
+
+.dataTables_filter {
+  margin-bottom: 10px;
+}
+
+select[name="myTable_length"] {
+  width: 80px;
+}
+
+select[name="tabling_length"] {
+  width: 80px;
+}
+
+.dataTables_length select {
+  width: 55px;
+}
+
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc {
+  font-weight: normal;
+}
+
+a.toggle-vis {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.dataTables_paginate,
+.dataTables_info {
+  margin-top: 10px;
+}
+[v-cloak] {
+  display: none;
+}
+
+/* Froala Editor */
+.fr-box.fr-basic {
+  border: 2px solid teal;
+  margin-bottom: 20px;
+}

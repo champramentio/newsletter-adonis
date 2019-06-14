@@ -1,0 +1,38 @@
+@layout('include.layout')
+
+@section('admin_content')
+	<h1>Newsletter Info</h1>
+	@include('include.notification')
+
+	<table class="simple">
+		<tr>
+			<td>Subject :</td>
+			<td>{{ data.subject }}</td>
+		</tr>
+		<tr>
+			<td>Content :</td>
+			<td>{{{ data.content }}}</td>
+		</tr>
+		<tr>
+			<td>Sender Email :</td>
+			<td>{{ data.sender_email }}</td>
+		</tr>
+		<tr>
+			<td>Sender Name :</td>
+			<td>{{ data.sender_name }}</td>
+		</tr>
+		<tr>
+			<td>Recipient Group :</td>
+			<td>{{ data.recipient[0].label }}</td>
+		</tr>
+		<tr>
+			<td>Total Recipients :</td>
+			<td>{{ data.recipient[0].recipient_email.length }}</td>
+		</tr>
+	</table><br />
+	
+	<div>
+		<a href="/admin/newsletter" class="button">Back</a>
+	</div>
+@endsection
+

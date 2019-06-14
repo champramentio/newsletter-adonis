@@ -1,0 +1,23 @@
+@layout('include.layout')
+
+@section('admin_content')
+	<h1>Recipient Info</h1>
+	@include('include.notification')
+
+	<table class="simple">
+		<tr>
+			<td>Group Label :</td>
+			<td>{{ data.label }}</td>
+		</tr>
+		<tr>
+			<td>Recipient Emails :</td>
+			<!-- triple curly braces to decode html tags -->
+			<td>{{{ email_list }}}</td> 
+		</tr>
+	</table><br />
+	
+	<div>
+		<a href="/admin/recipient" class="button">Back</a>
+	</div>
+@endsection
+

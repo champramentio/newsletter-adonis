@@ -1,0 +1,43 @@
+@layout('include.layout')
+
+@section('admin_content')
+	<h1>Manage Recipients</h1>
+	@include('include.notification')
+
+	<div class="spacing">
+		<a href="/admin/recipient/add" class="button">Create Recipient</a>
+	</div>
+
+	<table id="myTable" class="cell-border nowrap hover stripe">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Group Label</th>
+				<th>Total Recipients</th>
+				<th>Created Datetime</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			@each(r in data)
+			<tr>
+				<td>{{ r.id }}</td>
+				<td>{{ r.label }}</td>
+				<td>{{ r.recipient_email.length }}</td>
+				<!-- one of hook method -->
+				<td>{{ getRelativeDate(r.created_datetime) }}</td>
+				<td style="text-align:left">
+					<a class="formlink" href="/admin/recipient/{{ r.id }}/info">View</a>
+					<a class="formlink" href="/admin/recipient/{{ r.id }}/edit">Edit</a>
+					<!-- delete request uses additional "_method=DELETE" inside form action -->
+					<form action="/admin/recipient/{{ r.id }}/delete/?_method=DELETE" method="POST">
+						{{ csrfField() }}
+						<button class="formlink" onclick="return confirm('Do you want to delete this?')">Delete</button>
+					</form>
+				</td>
+			</tr>
+			@endeach
+		</tbody>
+	</table>
+@endsection
+

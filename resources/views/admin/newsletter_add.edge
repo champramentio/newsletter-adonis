@@ -1,0 +1,70 @@
+@layout('include.layout')
+
+@section('admin_content')
+	<h1>Add Newsletter</h1>
+	@include('include.notification')
+
+	<form method="POST" action="/admin/newsletter/add">
+		{{ csrfField() }}
+		<div>
+			<label>Email Subject</label>
+			<div>
+				<input type="text" name="subject" value="{{ old('subject', '') }}" required>
+				@if(getErrorFor('field') === 'subject')
+					<span class="red_bold">{{ getErrorFor('message') }}</span>
+				@endif
+			</div>
+		</div>
+		<div>
+			<label>Email Content</label>
+			<div>
+				<textarea id="editor" name="content" style="height:110px">{{ old('content') }}</textarea>
+				@if(getErrorFor('field') === 'content')
+					<span class="red_bold">{{ getErrorFor('message') }}</span>
+				@endif
+			</div>
+		</div>
+		<div>
+			<label>Sender Email</label>
+			<div>
+				<input type="text" name="sender_email" value="{{ old('sender_email', '') }}" required>
+				@if(getErrorFor('field') === 'sender_email')
+					<span class="red_bold">{{ getErrorFor('message') }}</span>
+				@endif
+			</div>
+		</div>
+		<div>
+			<label>Sender Name</label>
+			<div>
+				<input type="text" name="sender_name" value="{{ old('sender_name', '') }}" required>
+				@if(getErrorFor('field') === 'sender_name')
+					<span class="red_bold">{{ getErrorFor('message') }}</span>
+				@endif
+			</div>
+		</div>
+		<div>
+			<label>Recipient Group</label>
+			<div>
+				<select name="recipient_id">
+					<option value="">- choose -</option>
+					@each(r in recipients)
+						<option value="{{ r.id }}">{{r.label}}</option>
+					@endeach
+				</select>
+				@if(getErrorFor('field') === 'recipient_id')
+					<span class="red_bold">{{ getErrorFor('message') }}</span>
+				@endif
+			</div>
+		</div><br />
+		<div>
+			<button type="submit">Save</button>&nbsp;&nbsp;
+			<a href="/admin/newsletter">Back</a>
+		</div>
+	</form>
+	
+	<!-- Froala Editor -->
+	<link href='https://cdn.jsdelivr.net/npm/froala-editor@3.0.0-rc.2/css/froala_editor.pkgd.min.css' rel='stylesheet' type='text/css' />
+	<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@3.0.0-rc.2/js/froala_editor.pkgd.min.js'></script>
+	<script>new FroalaEditor('#editor')</script>		
+@endsection
+

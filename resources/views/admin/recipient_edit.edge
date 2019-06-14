@@ -1,0 +1,33 @@
+@layout('include.layout')
+
+@section('admin_content')
+	<h1>Edit Recipient</h1>
+	@include('include.notification')
+
+	<form method="POST" action="/admin/recipient/{{ recipient.id }}/edit/?_method=PUT">
+		{{ csrfField() }}
+		<div>
+			<label>Group Label</label>
+			<div>
+				<input type="text" name="label" value="{{ old('label', recipient.label) }}" required>
+				@if(getErrorFor('field') === 'label')
+					<span class="red_bold">{{ getErrorFor('message') }}</span>
+				@endif
+			</div>
+		</div>
+		<div>
+			<label>Recipient Email List</label>
+			<div>
+				<textarea name="email_list" rows="10">{{ old('email_list', email_list) }}</textarea>
+				@if(getErrorFor('field') === 'email_list')
+					<span class="red_bold">{{ getErrorFor('message') }}</span>
+				@endif
+			</div>
+		</div>
+		<div>
+			<button type="submit">Save</button>&nbsp;&nbsp;
+			<a href="/admin/recipient">Back</a>
+		</div>
+	</form>
+@endsection
+

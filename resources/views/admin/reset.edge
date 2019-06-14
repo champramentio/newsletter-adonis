@@ -1,0 +1,46 @@
+@layout('include.layout')
+
+@section('guest')
+	<div class="login">
+		<h1>Reset Password</h1>
+		@include('include.notification')
+
+		<hr />
+		<form method="POST" action="/admin/reset_password">
+			{{ csrfField() }}
+			<input type="hidden" name="token" value={{ token }}>
+			<div>
+				<label>Email Address</label>
+				<div>
+					<input type="email" name="email" placeholder="confirm your email" value="{{ old('email', '') }}" required>
+					@if(getErrorFor('field') === 'email')
+						<span class="red_bold">{{ getErrorFor('message') }}</span>
+					@endif
+				</div>
+			</div>
+			<div>
+				<label>New Password</label>
+				<div>
+					<input type="password" name="password" placeholder="min. 6 digit of alphanumeric" value="{{ old('password', '') }}" required>
+					@if(getErrorFor('field') === 'password')
+						<span class="red_bold">{{ getErrorFor('message') }}</span>
+					@endif
+				</div>
+			</div>
+			<div>
+				<label>Retype Password</label>
+				<div>
+					<input type="password" name="password2" placeholder="min. 6 digit of alphanumeric" value="{{ old('password2', '') }}" required>
+					@if(getErrorFor('field') === 'password2')
+						<span class="red_bold">{{ getErrorFor('message') }}</span>
+					@endif
+				</div>
+			</div>
+
+			<div>
+				<button type="submit">Reset</button>&nbsp;&nbsp;
+				<a href="/admin/login">Login</a>
+			</div>
+		</form>
+	</div>
+@endsection
