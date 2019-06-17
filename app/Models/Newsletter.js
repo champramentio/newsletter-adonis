@@ -3,6 +3,29 @@
 const Model = use("Model");
 
 class Newsletter extends Model {
+  static boot() {
+    super.boot();
+
+    //global query
+    this.addGlobalScope(builder => {
+      //call the relationship model object
+      builder.with("recipient", builder => {
+        //call the relationship model object (inside Recipient.js Model)
+        builder.with("recipient_email", builder => {
+          builder.setVisible(["email"]); //only select this column
+        });
+      });
+      //call the relationship model object
+      builder.with("created_by", builder => {
+        builder.setVisible(["username"]); //only select this column
+      });
+      //call the relationship model object
+      builder.with("sent_by", builder => {
+        builder.setVisible(["username"]); //only select this column
+      });
+    });
+  }
+
   //define the table name
   static get table() {
     return "newsletter";

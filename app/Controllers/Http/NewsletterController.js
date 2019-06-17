@@ -7,19 +7,7 @@ const Event = use("Event");
 
 class NewsletterController {
   async getIndex({ view }) {
-    const newsletters = await Newsletter.query()
-      .with("recipient", builder => {
-        builder.with("recipient_email", builder => {
-          builder.setVisible(["email"]);
-        });
-      })
-      .with("created_by", builder => {
-        builder.setVisible(["username"]);
-      })
-      .with("sent_by", builder => {
-        builder.setVisible(["username"]);
-      })
-      .fetch();
+    const newsletters = await Newsletter.all();
 
     return view.render("admin/newsletter", {
       data: newsletters.toJSON()
@@ -34,6 +22,7 @@ class NewsletterController {
 
   async getAdd({ view }) {
     const recipients = await Recipient.all();
+
     return view.render("admin/newsletter_add", {
       recipients: recipients.toJSON()
     });
